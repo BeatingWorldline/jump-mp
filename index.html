@@ -26,6 +26,22 @@
         }
 
         docReady(async function () {
+            function normalizeHref(href) {
+                var u = (href || '').trim()
+                u = u.replace(/[\r\n\t]/g, '')
+                u = u.replace(/[\u200B-\u200D\uFEFF]/g, '')
+                u = u.replace(/`/g, '')
+                if (u[0] === '[' && u[u.length - 1] === ']') u = u.slice(1, -1)
+                u = u.replace(/[),\]]+$/g, '')
+                return u
+            }
+
+            var normalizedHref = normalizeHref(window.location.href)
+            if (normalizedHref && normalizedHref !== window.location.href) {
+                window.location.replace(normalizedHref)
+                return
+            }
+
             var ua = navigator.userAgent.toLowerCase()
             var isWXWork = ua.match(/wxwork/i) == 'wxwork'
             var isWeixin = !isWXWork && ua.match(/micromessenger/i) == 'micromessenger'
@@ -70,7 +86,7 @@
                     timestamp: 0, 
                     nonceStr: 'nonceStr', 
                     signature: 'signature', 
-                    jsApiList: ['chooseImage'], 
+                    jsApiList: [], 
                     openTagList: ['wx-open-launch-weapp'], 
                 })
 
