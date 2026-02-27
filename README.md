@@ -4,6 +4,9 @@
 
 本项目是一个部署在 **微信云开发 (WeChat CloudBase)** 静态网站托管环境下的中继页面。其主要作用是作为 **作品集项目小程序** 与 **目标小程序** 之间的跳转桥梁。
 
+因微信官方跳转限制，故需要单独部署。
+官方文档地址：https://developers.weixin.qq.com/miniprogram/dev/wxcloudservice/wxcloud/guide/staticstorage/jump-miniprogram.html
+
 通过对接微信开放标签（WeChat Open Tags）与云开发免鉴权机制，实现在微信环境内（如小程序 Webview、微信内置浏览器）流畅地跳转至指定的小程序页面。
 
 ## 核心功能 (Core Features)
